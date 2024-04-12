@@ -6,7 +6,7 @@ from cleanfid.resize import build_resizer
 import zipfile
 
 class IdentityFunc:
-    def __call__(x):
+    def __call__(self, x):
         return x
 
 
