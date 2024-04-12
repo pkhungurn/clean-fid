@@ -5,6 +5,10 @@ from PIL import Image
 from cleanfid.resize import build_resizer
 import zipfile
 
+class IdentityFunc:
+    def __call__(x):
+        return x
+
 
 class ResizeDataset(torch.utils.data.Dataset):
     """
@@ -21,7 +25,7 @@ class ResizeDataset(torch.utils.data.Dataset):
         self.transforms = torchvision.transforms.ToTensor()
         self.size = size
         self.fn_resize = build_resizer(mode)
-        self.custom_image_tranform = lambda x: x
+        self.custom_image_tranform = IdentityFunc()
         self._zipfile = None
 
     def _get_zipfile(self):
