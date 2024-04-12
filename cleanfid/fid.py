@@ -136,6 +136,7 @@ def get_folder_features(fdir, model=None, num_workers=12, num=None,
     else:
         files = sorted([file for ext in EXTENSIONS
                     for file in glob(os.path.join(fdir, f"**/*.{ext}"), recursive=True)])
+        files = list(set(files))
     if verbose:
         print(f"Found {len(files)} images in the folder {fdir}")
     # use a subset number of files if needed
